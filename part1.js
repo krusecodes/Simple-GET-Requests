@@ -9,14 +9,14 @@ function getDogImage(numberOfDogs = 3) {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
-   $('.results').html(`<h2>Look at these dogs!</h2>`);
-   for (let dog of responseJson.message) {
-     $('.results').append(
-     `<img src="${dog}" class="results-img" width="150" height="auto">`);
-   }
-  $('.results').removeClass('hidden');
-}
+    console.log(responseJson);
+     $('.results').html(`<h2>Look at these dogs!</h2>`);
+     for (let dog of responseJson.message) {
+       $('.results').append(
+       `<img src="${dog}" class="results-img" width="200" height="auto">`);
+     }
+    $('.results').removeClass('hidden');
+  }
 
 function watchForm() {
   $('form').submit(event => {
