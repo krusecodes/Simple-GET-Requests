@@ -21,6 +21,7 @@ function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     let numOfDogs = $('input[name="typeOfDogs"]').val();
+    console.log(numOfDogs)
     getDogImage( numOfDogs );
   });
 }

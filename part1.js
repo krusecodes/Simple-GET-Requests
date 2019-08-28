@@ -5,6 +5,7 @@ function getDogImage(numberOfDogs = 3) {
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
+    .then(responseJson => console.log(responseJson))
     .catch(error => alert('Something went wrong. Try again later.'));
 }
 
