@@ -1,5 +1,7 @@
 'use strict';
 
+let numOfDogs = 1;
+
 function getDogImage(typeOfDogs) {
   fetch(`https://dog.ceo/api/breed/${typeOfDogs}/images`)
     .then(response => response.json())
@@ -8,21 +10,22 @@ function getDogImage(typeOfDogs) {
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
-   $('.results').html(`<h2>Look at these dogs!</h2>`);
-   for (let dog of responseJson.message) {
+  console.log(responseJson.status);
+  if (responseJson.status==="error") {
+    $('.results').html(`<h2>Sorry, this does not exist. Try Something else!</h2>`);
+  } else {
+  $('.results').html(`<h2>Look at these dogs!</h2>`);
      $('.results').append(
-     `<img src="${dog}" class="results-img" width="200" height="auto">`);
-   }
-  $('.results').removeClass('hidden');
+     `<img src="${responseJson.message[0]}" class="results-img" width="200" height="auto">`);
+  $('.results').removeClass('hidden'); 
+}
 }
 
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
     let numOfDogs = $('input[name="typeOfDogs"]').val();
-    console.log(numOfDogs)
-    getDogImage( numOfDogs );
+    getDogImage(numOfDogs);
   });
 }
 
